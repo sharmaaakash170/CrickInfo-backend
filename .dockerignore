@@ -1,0 +1,6 @@
+# Ignore all the files and directories except what’s needed for Docker
+.git/
+.idea/
+.vscode/
+*.log
+*.tmp
