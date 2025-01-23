@@ -21,7 +21,7 @@ services:
       start_period: 30s
 
   crick_info_app:
-    build: .
+    image: sharmaaakash170/crickinfoapp:latest
     container_name: crick_info_container
     ports:
       - 8080:8080
