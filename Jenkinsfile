@@ -6,7 +6,9 @@ pipeline{
         stage("Code clone"){
             steps{
                 // git url: "https://github.com/sharmaaakash170/CrickInfo-backend.git", branch: "main"
-                clone("https://github.com/sharmaaakash170/CrickInfo-backend.git", "main")
+                // clone("https://github.com/sharmaaakash170/CrickInfo-backend.git", "main")
+                clone()
+                
             }
         }
         stage("Code Build"){
