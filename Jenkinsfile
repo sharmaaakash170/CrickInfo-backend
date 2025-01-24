@@ -15,7 +15,14 @@ pipeline{
         }
         stage("Push to dockerhub"){
             steps{
-                push_to_dockerhub(prevBuildAppName: "crickinfoapp", dockerCreds: "dockercreds", version: "latest")
+                withCredentials([usernamePassword(
+                    credentialsId:"dockercreds",
+                    usernameVariable:"username",
+                    passwordVariable:"password")]){
+                        sh "docker login -u ${env.username} -p ${env.password}"
+                        sh "docker image tag crickapp:latest ${env.username}/crickinfoapp:latest"
+                        sh "docker push ${env.username}/crickinfoapp:latest"
+                    }
             }
         }
         stage("Code Deploy finally"){
