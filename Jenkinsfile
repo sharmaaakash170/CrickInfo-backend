@@ -11,7 +11,7 @@ pipeline{
         stage("Code Build"){
             steps{
                 // sh "docker build -t crickapp ."
-                build("crickinfoapp", "latest")
+                build(image: "crickinfoapp", version: "latest")
             }
         }
         stage("Push to dockerhub"){
@@ -24,7 +24,7 @@ pipeline{
                 //         sh "docker image tag crickapp:latest ${env.username}/crickinfoapp:latest"
                 //         sh "docker push ${env.username}/crickinfoapp:latest"
                 //     }
-                push_to_dockerhub("crickinfoapp", "dockercreds", "latest")
+                push_to_dockerhub(prevBuildAppName: "crickinfoapp", dockerCreds: "dockercreds", version: "latest")
             }
         }
         stage("Code Deploy finally"){
