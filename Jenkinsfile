@@ -10,7 +10,7 @@ pipeline{
         }
         stage("Code Build"){
             steps{
-                build(image: "crickinfoapp", version: "latest")
+                build_image(image: "crickinfoapp", version: "latest")
             }
         }
         stage("Push to dockerhub"){
