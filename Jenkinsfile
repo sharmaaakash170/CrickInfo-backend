@@ -1,10 +1,12 @@
+@Library('Shared')_
 pipeline{
     agent {label "worker-server"}
     
     stages{
         stage("Code clone"){
             steps{
-                git url: "https://github.com/sharmaaakash170/CrickInfo-backend.git", branch: "main"
+                // git url: "https://github.com/sharmaaakash170/CrickInfo-backend.git", branch: "main"
+                clone("https://github.com/sharmaaakash170/CrickInfo-backend.git", "main")
             }
         }
         stage("Code Build"){
